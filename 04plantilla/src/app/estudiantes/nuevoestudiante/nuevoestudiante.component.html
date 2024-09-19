@@ -1,0 +1,55 @@
+<div class="card my-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="mb-0">
+          {{ titulo }}
+          <!--Interpolación para enviar datos desde el .ts hacia el html-->
+        </h3>
+      </div>
+      <form [formGroup]="frm_Estudiante" (ngSubmit)="grabar()">
+        <div class="row">
+          <!-- Grado -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="Grado">Grado</label>
+            <input formControlName="grado" type="text" class="form-control" id="Grado" placeholder="Ingrese el grado" />
+            <div *ngIf="frm_Estudiante.get('grado').invalid && frm_Estudiante.get('grado').touched">
+              <small *ngIf="frm_Estudiante.get('grado').hasError('required')" style="color: red">El grado es requerido</small>
+            </div>
+          </div>
+  
+          <!-- Nombre -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="Nombre">Nombre</label>
+            <input formControlName="nombre" type="text" class="form-control" id="Nombre" placeholder="Ingrese el nombre" />
+            <div *ngIf="frm_Estudiante.get('nombre').invalid && frm_Estudiante.get('nombre').touched">
+              <small *ngIf="frm_Estudiante.get('nombre').hasError('required')" style="color: red">El nombre es requerido</small>
+            </div>
+          </div>
+  
+          <!-- Apellido -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="Apellido">Apellido</label>
+            <input formControlName="apellido" type="text" class="form-control" id="Apellido" placeholder="Ingrese el apellido" />
+            <div *ngIf="frm_Estudiante.get('apellido').invalid && frm_Estudiante.get('apellido').touched">
+              <small *ngIf="frm_Estudiante.get('apellido').hasError('required')" style="color: red">El apellido es requerido</small>
+            </div>
+          </div>
+  
+          <!-- Fecha de Nacimiento -->
+          <div class="form-group mb-3">
+            <label class="form-label" for="FechaNacimiento">Fecha de Nacimiento</label>
+            <input formControlName="fecha_nacimiento" type="date" class="form-control" id="FechaNacimiento" />
+            <div *ngIf="frm_Estudiante.get('fecha_nacimiento').invalid && frm_Estudiante.get('fecha_nacimiento').touched">
+              <small *ngIf="frm_Estudiante.get('fecha_nacimiento').hasError('required')" style="color: red">La fecha de nacimiento es requerida</small>
+            </div>
+          </div>
+  
+          <!-- Botón de Grabar -->
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="frm_Estudiante.invalid">Grabar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
